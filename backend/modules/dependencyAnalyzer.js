@@ -38,6 +38,7 @@ export async function analyzeDependencies(clonePath) {
     const fileCount = Object.keys(deps).length;
     
     console.log(`✅ Found ${fileCount} files with dependency relationships`);
+    console.log(`🔍 Dependency Graph Output:`, JSON.stringify(deps, null, 2));
     
     return deps;
   } catch (error) {

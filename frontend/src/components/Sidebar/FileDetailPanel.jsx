@@ -22,8 +22,9 @@ export default function FileDetailPanel({ node, allNodes, onNodeSelect }) {
   }
 
   const color = getNodeColor(node.type);
+  const pathIdentifier = node.fullPath || node.id || '';
   const dependents = allNodes ? allNodes.filter(n => n.deps && n.deps.some(d => 
-    d === node.fullPath || d.endsWith(node.fullPath) || node.fullPath.endsWith(d)
+    d === pathIdentifier || d.endsWith(pathIdentifier) || pathIdentifier.endsWith(d)
   )) : [];
 
   return (
@@ -39,7 +40,7 @@ export default function FileDetailPanel({ node, allNodes, onNodeSelect }) {
         color: 'var(--text-primary)', fontSize: '0.8125rem', wordBreak: 'break-all',
         marginBottom: '0.75rem', lineHeight: 1.5,
       }}>
-        {node.fullPath}
+        {node.fullPath || node.id || 'Unknown Path'}
       </p>
 
       {/* Badges */}

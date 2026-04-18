@@ -45,7 +45,7 @@ router.post('/analyze', async (req, res) => {
     const scores = scoreImpact(deps);
     
     // Step 5: Generate AI summaries
-    const summaries = await generateSummaries(deps, clonePath, classifications);
+    const summaries = await generateSummaries(deps, clonePath, classifications, scores);
     
     // Step 6: Build onboarding path
     const onboardingPath = buildOnboardingPath(deps, classifications);
